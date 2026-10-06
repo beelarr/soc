@@ -10,6 +10,6 @@ A wish with no session behind it can wait. Put how-do-I questions in discussions
 
 Read .out-of-scope/ before you file. Those notes are decisions, not a backlog.
 
-Also out of scope: a setting that only your tool needs, a branch for one harness, and a change that exists to match one person's habits. Put that in your own AGENTS.md, or fork the skill.
+Also out of scope: a setting that only your tool needs, a branch for one tool, and a change that exists to match one person's habits. Put that in your own AGENTS.md, or fork the skill.
 
 If an issue is too thin to judge, we will ask once. If there is no reply, we will close it.

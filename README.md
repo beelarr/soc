@@ -4,7 +4,7 @@
   <img src="docs/soc.jpg" alt="SOC, a black-and-white stick-figure sketch holding a scroll with a question mark" width="280" />
 </p>
 
-Human intent becomes a harness an agent can follow. This repository is one skill, `socratic`. You install it in a repository you already have. That repository either has a harness or it does not.
+Human intent becomes harness instructions an agent can follow. This repository is one skill, `socratic`. You install it in a repository you already have. That repository either has harness instructions or it does not.
 
 SOC asks about what the code is already doing before anyone writes a rule. The skill does not invent a practice the person did not state. An answer that does not change how an agent should work produces no file.
 
@@ -16,22 +16,22 @@ npx skills add beelarr/soc
 
 That installs one skill, `socratic`. Open an agent in the repository you want to wrap. It reads `setup.md`, `research.md`, `interview.md`, and `verify.md` from its own folder and follows them in that order. Those four files are not separate skills, so they do not take the names `setup`, `research`, `interview`, or `verify` in the skill list.
 
-Add `-g` to install the skill for every repository on your machine. `npx skills update` updates the installed `socratic` skill. It does not by itself improve the harness in the repository. That is another session.
+Add `-g` to install the skill for every repository on your machine. `npx skills update` updates the installed `socratic` skill. It does not by itself improve the harness instructions in the repository. That is another session.
 
 ## Two paths
 
-The harness is the documentation an agent follows: `AGENTS.md`, the rules in `.agents/rules/`, and the skills in `.agents/skills/`. That documentation is the harness. The skill does not create the repository.
+Harness instructions are the documentation an agent follows: `AGENTS.md`, the rules in `.agents/rules/`, and the skills in `.agents/skills/`. Those files are the harness instructions. The skill does not create the repository.
 
-- **No harness yet.** The repository has no `AGENTS.md`, and `.agents/` has no rules and no skills besides `socratic` after the install. The skill writes the harness from what you accept.
-- **A harness is already there.** The skill reads the rules and skills it finds, checks the manifests for what changed, and updates a rule, skill, or MCP entry it wrote when your answer says to. An `AGENTS.md` you already wrote stays. If it does not mention `.agents`, the skill adds a short pointer at the end.
+- **No harness instructions yet.** The repository has no `AGENTS.md`, and `.agents/` has no rules and no skills besides `socratic` after the install. The skill writes the harness instructions from what you accept.
+- **Harness instructions are already there.** The skill reads the rules and skills it finds, checks the manifests for what changed, and updates a rule, skill, or MCP entry it wrote when your answer says to. An `AGENTS.md` you already wrote stays. If it does not mention `.agents`, the skill adds a short pointer at the end.
 
 ## Any tool
 
-The harness has one copy, in `.agents`. The skill asks which tools to connect: Cursor, Claude, Codex, Copilot, Windsurf, or all of them. A tool that reads some other path still gets a symlink or a one-line import pointing at `.agents`. It does not get its own copy of the rules and skills.
+The harness instructions have one copy, in `.agents`. The skill asks which tools to connect: Cursor, Claude, Codex, Copilot, Windsurf, or all of them. A tool that reads some other path still gets a symlink or a one-line import pointing at `.agents`. It does not get its own copy of the rules and skills.
 
 ## What you get
 
-A first run leaves a harness in the repository. A later run leaves the harness that is already there and changes only what you accept:
+A first run leaves harness instructions in the repository. A later run leaves the harness instructions that are already there and changes only what you accept:
 
 - `AGENTS.md` at the root, if you did not already have one.
 - `.agents/` holding the rules and skills.
