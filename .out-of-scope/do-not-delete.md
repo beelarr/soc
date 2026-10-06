@@ -1,0 +1,1 @@
+The skill may edit a rule, skill, or MCP entry it wrote. It does not delete source files, manifests, .git, or a tool directory that was already there. Issues that ask it to clean up or replace existing project files are out of scope.

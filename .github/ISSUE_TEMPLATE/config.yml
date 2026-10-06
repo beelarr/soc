@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Questions and discussion
-    url: https://github.com/beelarr/agent-engineering-contract/discussions
-    about: >
-      Use GitHub Discussions for questions and general conversation (enable
-      Discussions in repo Settings → General → Features if this link 404s).
-      Do not use blank issues.
+  - name: How-do-I questions
+    url: https://github.com/beelarr/soc/discussions
+    about: How-do-I questions, and anything that is not a concrete failure in a real session.

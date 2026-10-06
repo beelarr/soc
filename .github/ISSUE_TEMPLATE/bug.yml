@@ -1,0 +1,43 @@
+name: Session went wrong
+description: A session you ran where the skill wrote or installed the wrong thing.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        File this when you ran `socratic` and the result was wrong.
+        Read SCOPE.md and .out-of-scope/ first. How-do-I questions go to discussions.
+  - type: dropdown
+    id: step
+    attributes:
+      label: Which step
+      description: The step that went wrong, or socratic if the skill itself did.
+      options:
+        - setup.md
+        - research.md
+        - interview.md
+        - verify.md
+        - socratic
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where you ran it
+      description: The agent and the model.
+      placeholder: Cursor, with the model name
+    validations:
+      required: true
+  - type: textarea
+    id: did
+    attributes:
+      label: What the skill did
+      description: Paste the session.
+    validations:
+      required: true
+  - type: textarea
+    id: wanted
+    attributes:
+      label: What you wanted instead
+    validations:
+      required: true
