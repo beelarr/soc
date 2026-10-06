@@ -4,7 +4,7 @@
   <img src="docs/soc.jpg" alt="SOC, a black-and-white stick-figure sketch holding a scroll with a question mark" width="280" />
 </p>
 
-Human intent becomes a harness an agent can follow. This repository is one skill, `socratic`. You install it, open an agent in your repository, and the agent does the work. There is no CLI.
+Human intent becomes harness instructions an agent can follow. This repository is one skill, `socratic`. You install it in a repository you already have. That repository either has harness instructions or it does not.
 
 SOC asks about what the code is already doing before anyone writes a rule. The skill does not invent a practice the person did not state. An answer that does not change how an agent should work produces no file.
 
@@ -16,15 +16,26 @@ npx skills add beelarr/soc
 
 That installs one skill, `socratic`. Open an agent in the repository you want to wrap. It reads `setup.md`, `research.md`, `interview.md`, and `verify.md` from its own folder and follows them in that order. Those four files are not separate skills, so they do not take the names `setup`, `research`, `interview`, or `verify` in the skill list.
 
-Add `-g` to install the skill for every repository on your machine. Update it later with `npx skills update`.
+Add `-g` to install the skill for every repository on your machine. `npx skills update` updates the installed `socratic` skill. It does not by itself improve the harness instructions in the repository. That is another session.
+
+## Two paths
+
+Harness instructions are the documentation an agent follows: `AGENTS.md`, the rules in `.agents/rules/`, and the skills in `.agents/skills/`. Those files are the harness instructions. The skill does not create the repository.
+
+- **No harness instructions yet.** The repository has no `AGENTS.md`, and `.agents/` has no rules and no skills besides `socratic` after the install. The skill writes the harness instructions from what you accept.
+- **Harness instructions are already there.** The skill reads the rules and skills it finds, checks the manifests for what changed, and updates a rule, skill, or MCP entry it wrote when your answer says to. An `AGENTS.md` you already wrote stays. If it does not mention `.agents`, the skill adds a short pointer at the end.
+
+## Any tool
+
+The harness instructions have one copy, in `.agents`. The skill asks which tools to connect: Cursor, Claude, Codex, Copilot, Windsurf, or all of them. A tool that reads some other path still gets a symlink or a one-line import pointing at `.agents`. It does not get its own copy of the rules and skills.
 
 ## What you get
 
-A finished run leaves a harness in the repository:
+A first run leaves harness instructions in the repository. A later run leaves the harness instructions that are already there and changes only what you accept:
 
 - `AGENTS.md` at the root, if you did not already have one.
 - `.agents/` holding the rules and skills.
-- When `.cursor`, `.claude`, or `.codex` is missing, a symlink from that directory to `.agents`, plus that tool's ignore file. If one of those is already a real directory, it stays. Cursor gets `.cursor/rules/agents.mdc`. Claude gets `.claude/CLAUDE.md` containing `@../AGENTS.md`, and only when that file is absent. Codex uses the root `AGENTS.md` and does not get `.codex/AGENTS.md`. Copilot and Windsurf get a one-line pointer at `AGENTS.md`.
+- When `.cursor`, `.claude`, or `.codex` is missing, a symlink from that directory to `.agents`, plus that tool's ignore file. If one of those is already a real directory, it stays. Cursor gets `.cursor/rules/agents.mdc`. Claude gets `.claude/CLAUDE.md` containing `@../AGENTS.md`, and only when that file is absent. Codex uses the root `AGENTS.md` and does not get `.codex/AGENTS.md`. Copilot and Windsurf get a one-line pointer at `AGENTS.md`. Any other tool gets a symlink or a one-line import to `.agents`.
 - Rules in `.agents/rules/` and skills in `.agents/skills/` for the practices you accepted.
 - Vendor skills and MCP entries only where you said yes.
 

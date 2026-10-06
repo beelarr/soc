@@ -22,7 +22,7 @@ If `.cursor`, `.claude`, or `.codex` is already a real directory, leave it. Do n
 
   ```mdc
   ---
-  description: Read the harness in .agents before editing.
+  description: Read the harness instructions in .agents before editing.
   alwaysApply: true
   ---
 

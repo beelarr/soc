@@ -14,7 +14,7 @@ const REQUIRED = [
   ["SKILL.md", "interview.md"],
   ["SKILL.md", "verify.md"],
   ["SKILL.md", "They are not separate skills"],
-  ["SKILL.md", "Do not delete, move, or overwrite a file this harness did not write"],
+  ["SKILL.md", "Do not delete, move, or overwrite a file this skill did not write"],
   ["SKILL.md", "Do not create, delete, or modify `.git`"],
   ["setup.md", "Do not delete it"],
   ["setup.md", "package.json"],
