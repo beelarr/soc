@@ -1,0 +1,62 @@
+name: Bug report
+description: Report a defect in a package or the harness
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for a clear bug report. The skills write a rule only when the
+        person stated a practice. Leaving an answer as conversation is intentional.
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      description: Which skill is affected?
+      options:
+        - socratic
+        - setup.md
+        - research.md
+        - interview.md
+        - verify.md
+        - docs / meta
+        - unsure
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong in one or two sentences?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Commands, inputs, and environment (Node version, OS).
+      placeholder: |
+        1. npx skills add beelarr/agent-engineering-contract
+        2. Open an agent in the repository and let the harness run
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include logs or error output if useful.
+    validations:
+      required: true
+  - type: checkboxes
+    id: harness-related
+    attributes:
+      label: Harness behavior
+      options:
+        - label: A rule or skill was written for something the person did not accept
+        - label: A vendor skill or MCP was installed before the person said yes

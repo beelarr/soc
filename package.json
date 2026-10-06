@@ -1,0 +1,14 @@
+{
+  "name": "socratic-engineering",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Socratic Harness Builder. Skills that turn a repository and a conversation into rules and skills an agent can follow.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/skills.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
