@@ -24,7 +24,7 @@ A finished run leaves a harness in the repository:
 
 - `AGENTS.md` at the root, if you did not already have one.
 - `.agents/` holding the rules and skills.
-- When `.cursor`, `.claude`, or `.codex` is missing, a symlink from that directory to `.agents`, plus that tool's ignore file. If one of those is already a real directory, it stays and the skill adds a pointer inside it. Copilot and Windsurf get a one-line pointer at `AGENTS.md`.
+- When `.cursor`, `.claude`, or `.codex` is missing, a symlink from that directory to `.agents`, plus that tool's ignore file. If one of those is already a real directory, it stays. Cursor gets `.cursor/rules/agents.mdc`. Claude gets `.claude/CLAUDE.md` containing `@../AGENTS.md`, and only when that file is absent. Codex uses the root `AGENTS.md` and does not get `.codex/AGENTS.md`. Copilot and Windsurf get a one-line pointer at `AGENTS.md`.
 - Rules in `.agents/rules/` and skills in `.agents/skills/` for the practices you accepted.
 - Vendor skills and MCP entries only where you said yes.
 
@@ -36,7 +36,7 @@ You do not get a decision log. Ownership, incidents, and open questions stay in 
 
 | Step | What it does |
 | --- | --- |
-| `setup.md` | Asks which tools to connect. Writes `AGENTS.md`, `.agents`, and the links. Reads `package.json` and the other manifests. On a later run, reads `git log -1 -p` for those files. |
+| `setup.md` | Asks which tools to connect. Writes `AGENTS.md`, `.agents`, and the links. Reads `package.json` and the other manifests. On a later run, reads `git log -1 -p` for those files. The installed `socratic` skill does not by itself make a run a later run. |
 | `research.md` | Looks up skills and MCP servers for the dependencies, reads the docs for the version in the manifest, and prepares an offer. It does not install anything. |
 | `interview.md` | Describes the architecture it can see and asks if that is right. Says which skills may be useful and waits for a yes. Writes a rule in the person's words, with no extra ban. |
 | `verify.md` | Opens each file again and quotes a line from that read. A declined install, and an MCP the docs say this version cannot use, must be absent. |
@@ -49,7 +49,7 @@ Two examples:
 ## What the skills will not do
 
 - Install a skill, an MCP server, or a package before you say yes.
-- Delete a file it did not write. An existing `.cursor`, `.claude`, or `.codex` directory stays. The skill adds a pointer inside it.
+- Delete a file it did not write. An existing `.cursor`, `.claude`, or `.codex` directory stays. Cursor gets `.cursor/rules/agents.mdc`. Claude gets `.claude/CLAUDE.md` only if it is absent. Codex does not get `.codex/AGENTS.md`.
 - Read `.env`, `.env.*`, `*.pem`, or `*.key`.
 - Invent a stack by reading source files. Dependencies come from manifests. Architecture questions come from the directories and entry points the interview names.
 - Upload your repository. A documentation fetch uses a URL the agent shows you first.

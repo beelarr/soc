@@ -16,7 +16,21 @@ Ask which tools to connect: `cursor`, `claude`, `codex`, `copilot`, `windsurf`, 
 
 If the tool reads a different path, use that path. Point it at `.agents` with a symlink or a one-line import.
 
-If `.cursor`, `.claude`, or `.codex` is already a real directory, leave it. Do not delete it. Add a pointer inside that directory and leave the rest of the files.
+If `.cursor`, `.claude`, or `.codex` is already a real directory, leave it. Do not delete it. Write the pointer below only when that file is absent, and leave every other file in the directory alone.
+
+- Cursor applies a nested `AGENTS.md` only while it is working inside that folder, so do not write `.cursor/AGENTS.md`. Write `.cursor/rules/agents.mdc` if it is absent. If `.cursor/rules` is already a file, leave it and skip this pointer. The file is:
+
+  ```mdc
+  ---
+  description: Read the harness in .agents before editing.
+  alwaysApply: true
+  ---
+
+  Read AGENTS.md before editing.
+  ```
+
+- Claude: `.claude/CLAUDE.md` containing `@../AGENTS.md`.
+- Codex reads the root `AGENTS.md` and loads skills from `.agents/skills`. Do not write `.codex/AGENTS.md`. That file is not on Codex's discovery path.
 
 Every ignore file lists `.env`, `.env.*`, `*.pem`, and `*.key`. Do not add project policy to an ignore file.
 
@@ -38,7 +52,7 @@ Show the person the list. This list is input for research and the interview. Do 
 
 ## A later run
 
-When `.agents/rules` or `.agents/skills` already exist, this is an update.
+This is an update when `.agents/rules` already contains a file, or `.agents/skills` contains a directory other than `socratic`. The `socratic` skill the installer copied does not count. Run the git checks below on that update, and only then.
 
 For each manifest, run `git log -1 -p -- <file>` from `WORKSPACE`. Also run `git diff -- <file>` when the working tree differs from HEAD. Tell the person what was added, removed, or version-changed. A manifest that git has never contained before is the whole file, and the existing rules are the previous record.
 
