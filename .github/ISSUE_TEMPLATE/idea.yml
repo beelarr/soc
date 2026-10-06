@@ -1,0 +1,42 @@
+name: Change the skill text
+description: A change to the skill, from a session you ran.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A wish with no session behind it can wait.
+        Decisions already written in .out-of-scope/ stay there.
+  - type: checkboxes
+    id: not-decided
+    attributes:
+      label: Scope check
+      options:
+        - label: I read SCOPE.md and .out-of-scope/, and this is not already decided
+          required: true
+  - type: dropdown
+    id: step
+    attributes:
+      label: Which step
+      description: The step this change belongs in, or socratic for the skill itself.
+      options:
+        - setup.md
+        - research.md
+        - interview.md
+        - verify.md
+        - socratic
+    validations:
+      required: true
+  - type: textarea
+    id: session
+    attributes:
+      label: The session
+      description: What you ran, what the skill did, and why it was a problem.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: The change you want in the skill text
+    validations:
+      required: true
