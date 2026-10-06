@@ -4,7 +4,7 @@ This repository is one skill, `socratic`. It reads a repository, asks the person
 
 File an issue when that happened wrong in a session you actually ran. Say what you asked the agent to do, what it wrote or installed, and what you wanted instead.
 
-A wish with no session behind it can wait. Put how-do-I questions in discussions: https://github.com/beelarr/socratic-harness/discussions
+A wish with no session behind it can wait. Put how-do-I questions in discussions: https://github.com/beelarr/soc/discussions
 
 ## What we will not take
 

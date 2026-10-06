@@ -1,17 +1,17 @@
-# Socratic Harness
+# SOC
 
 <p align="center">
-  <img src="docs/soc.jpg" alt="Soc, a black-and-white stick-figure sketch holding a scroll with a question mark" width="280" />
+  <img src="docs/soc.jpg" alt="SOC, a black-and-white stick-figure sketch holding a scroll with a question mark" width="280" />
 </p>
 
 Human intent becomes a harness an agent can follow. This repository is one skill, `socratic`. You install it, open an agent in your repository, and the agent does the work. There is no CLI.
 
-Soc asks about what the code is already doing before anyone writes a rule. The skill does not invent a practice the person did not state. An answer that does not change how an agent should work produces no file.
+SOC asks about what the code is already doing before anyone writes a rule. The skill does not invent a practice the person did not state. An answer that does not change how an agent should work produces no file.
 
 ## Install
 
 ```bash
-npx skills add beelarr/socratic-harness
+npx skills add beelarr/soc
 ```
 
 That installs one skill, `socratic`. Open an agent in the repository you want to wrap. It reads `setup.md`, `research.md`, `interview.md`, and `verify.md` from its own folder and follows them in that order. Those four files are not separate skills, so they do not take the names `setup`, `research`, `interview`, or `verify` in the skill list.
@@ -83,4 +83,4 @@ This project owes a lot to Matt Pocock and poteto. Matt's [Skills for Real Engin
 
 ## Feedback
 
-Issues are for a session where the skill did the wrong thing. The standard is [SCOPE.md](./SCOPE.md). Questions go to [discussions](https://github.com/beelarr/socratic-harness/discussions).
+Issues are for a session where the skill did the wrong thing. The standard is [SCOPE.md](./SCOPE.md). Questions go to [discussions](https://github.com/beelarr/soc/discussions).
