@@ -4,7 +4,7 @@
   <img src="docs/soc.jpg" alt="SOC, a black-and-white stick-figure sketch holding a scroll with a question mark" width="280" />
 </p>
 
-Human intent becomes a harness an agent can follow. This repository is one skill, `socratic`. You install it in a repository you already have. That repository either has a harness or it does not. There is no CLI.
+Human intent becomes a harness an agent can follow. This repository is one skill, `socratic`. You install it in a repository you already have. That repository either has a harness or it does not.
 
 SOC asks about what the code is already doing before anyone writes a rule. The skill does not invent a practice the person did not state. An answer that does not change how an agent should work produces no file.
 
