@@ -24,7 +24,7 @@ npx skills update
 
 That replaces an installed copy with the latest `main`. It updates the skill. It does not by itself improve the harness instructions in the repository. That is another session.
 
-[v0.1.0](https://github.com/beelarr/soc/releases/tag/v0.1.0) is the first tagged release. A merge to `main` publishes the next patch tag after CI passes. Put `Release: minor` or `Release: major` on its own line in that merge commit to publish that bump instead. Install and update follow `main`, which moves ahead of the tag.
+[v0.1.0](https://github.com/beelarr/soc/releases/tag/v0.1.0) is the first tagged release. After CI passes on `main`, the commit messages since that tag publish the next one. `fix:` is a patch, `feat:` is a minor, and `feat!:` or a `BREAKING CHANGE:` footer is a major. `docs:` and `chore:` publish nothing. Install and update follow `main`, which moves ahead of the tag.
 
 ## Two paths
 

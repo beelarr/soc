@@ -37,14 +37,33 @@ jobs:
             echo "This commit is already tagged."
             exit 0
           fi
-          message=$(git log -1 --format=%B)
-          bump=patch
-          if printf '%s\n' "$message" | grep -qx 'Release: major'; then
-            bump=major
-          elif printf '%s\n' "$message" | grep -qx 'Release: minor'; then
-            bump=minor
-          fi
           latest=$(git tag -l 'v*' --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1 || true)
+          if [ -n "$latest" ]; then
+            range="${latest}..HEAD"
+          else
+            range="HEAD"
+          fi
+          rank=0
+          while IFS= read -r -d '' subject && IFS= read -r -d '' body; do
+            if printf '%s\n' "$subject" | grep -Eq '^[a-z]+(\([^)]+\))?!:' || printf '%s\n' "$body" | grep -Eq '^BREAKING CHANGE:'; then
+              rank=3
+            elif printf '%s\n' "$subject" | grep -Eq '^feat(\([^)]+\))?:' && [ "$rank" -lt 2 ]; then
+              rank=2
+            elif printf '%s\n' "$subject" | grep -Eq '^fix(\([^)]+\))?:' && [ "$rank" -lt 1 ]; then
+              rank=1
+            fi
+          done < <(git log "$range" --format='%s%x00%b%x00')
+          if [ "$rank" -eq 0 ]; then
+            echo "No feat, fix, or breaking commit since ${latest:-the start}. Nothing to publish."
+            exit 0
+          fi
+          if [ "$rank" -eq 3 ]; then
+            bump=major
+          elif [ "$rank" -eq 2 ]; then
+            bump=minor
+          else
+            bump=patch
+          fi
           if [ -z "$latest" ]; then
             next=v0.1.0
           else
