@@ -14,9 +14,17 @@ SOC asks about what the code is already doing before anyone writes a rule. The s
 npx skills add beelarr/soc
 ```
 
-That installs one skill, `socratic`. Open an agent in the repository you want to wrap. It reads `setup.md`, `research.md`, `interview.md`, and `verify.md` from its own folder and follows them in that order. Those four files are not separate skills, so they do not take the names `setup`, `research`, `interview`, or `verify` in the skill list.
+That installs one skill, `socratic`, from the latest commit on `main`. Open an agent in the repository you want to wrap. It reads `setup.md`, `research.md`, `interview.md`, and `verify.md` from its own folder and follows them in that order. Those four files are not separate skills, so they do not take the names `setup`, `research`, `interview`, or `verify` in the skill list.
 
-Add `-g` to install the skill for every repository on your machine. `npx skills update` updates the installed `socratic` skill. It does not by itself improve the harness instructions in the repository. That is another session.
+Add `-g` to install the skill for every repository on your machine.
+
+```bash
+npx skills update
+```
+
+That replaces an installed copy with the latest `main`. It updates the skill. It does not by itself improve the harness instructions in the repository. That is another session.
+
+[v0.1.0](https://github.com/beelarr/soc/releases/tag/v0.1.0) is the first tagged release. After CI passes on `main`, the commit messages since that tag publish the next one. `fix:` is a patch, `feat:` is a minor, and `feat!:` or a `BREAKING CHANGE:` footer is a major. `docs:` and `chore:` publish nothing. Install and update follow `main`, which moves ahead of the tag.
 
 ## Two paths
 
